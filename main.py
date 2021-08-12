@@ -45,7 +45,9 @@ def commands():
 			print("1")
 			if comCheck:
 				args = ""
-				os.execve(f"/usr/bin/{firstPart}", [firstPart, args], env)
+				p = os.fork()
+				if p == 0:
+					os.execve(f"/usr/bin/{firstPart}", [firstPart, args], env)
 			elif command == 'exit':
 				sys.exit(-1)
 				exit(-1)
