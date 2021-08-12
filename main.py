@@ -1,9 +1,9 @@
 import os
 import sys
-import posix
+import subprocess
 
 env = {}
-v = "1.0.1"
+v = "1.1.1"
 env['TERM'] = "linux"
 cwd = os.getcwd()
 c = input(f"[{cwd}]- #: ")
@@ -31,26 +31,19 @@ def commands():
 		commandSplit = command.split()
 		firstPart = commandSplit[0]
 		comCheck = os.path.isfile(f"{comDir}/{firstPart}")
+		p = os.fork()
 		if len(commandSplit) > 1:
-			print("2")
-			if comCheck:
-				args = commandSplit[1]
-				print("Executeda")
-				p = os.fork()
-				if p == 0:
-					os.execve(f"/usr/bin/{firstPart}", [f"{firstPart}", f"{args}"], env)
-				print('\n')
+			args = commandSplit[1]
+			firstPart = commandSplit[0]
+			ran = subprocess.run([firstPart, "-l", args], capture_output=True,text=True, shell=True)
+			print(ran.stdout)
 		elif len(commandSplit) == 1:
-			print("Executedb")
-			print("1")
-			if comCheck:
-				args = ""
-				p = os.fork()
-				if p == 0:
-					os.execve(f"/usr/bin/{firstPart}", [firstPart, args], env)
-			elif command == 'exit':
+			args = ""
+			firstPart = commandSplit[0]
+			if firstPart != 'help':
+				ran = subprocess.run([firstPart], capture_output=True,text=True, shell=True)
+				print(ran.stdout)
+			if firstPart == 'exit':
 				sys.exit(-1)
 				exit(-1)
-			elif command == 'help':
-				help()
 commands()
