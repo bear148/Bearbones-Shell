@@ -3,7 +3,7 @@ import sys
 import posix
 
 env = {}
-v = "1.0.0"
+v = "1.0.1"
 env['TERM'] = "linux"
 cwd = os.getcwd()
 c = input(f"[{cwd}]- #: ")
