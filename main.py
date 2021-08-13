@@ -4,14 +4,10 @@ import subprocess
 import asyncio
 
 env = {}
-v = "2.1.1"
+v = "3.1.1"
 env['TERM'] = "linux"
 cwd = os.getcwd()
 c = input(f"[{cwd}]- #: ")
-
-def write():
-	print(f"Bearbones-Shell v{v}")
-	print("Copyright (c) 2021: Michael S.")	
 
 def help():
 	print("\n")
@@ -39,6 +35,8 @@ async def run(cmd):
         print(f'[stderr]\n{stderr.decode()}')
 
 def commands():
+	print(f"Bearbones-Shell v{v}")
+	print("Copyright (c) 2021: Michael S.")	
 	while True:
 		c = input(f"[{cwd}]- #: ")
 		comDir = "/usr/bin"
@@ -46,20 +44,42 @@ def commands():
 		commandSplit = command.split()
 		firstPart = commandSplit[0]
 		comCheck = os.path.isfile(f"{comDir}/{firstPart}")
-		if len(commandSplit) > 1:
-			args = commandSplit[1]
-			firstPart = commandSplit[0]
-			asyncio.run(run(f'{firstPart} {args}'))
-			print('\n')
+		if len(commandSplit) == 2:
+			if firstPart == 'vim':
+				arg = commandSplit[1]
+				asyncio.run(run(f'/usr/bin/vim {arg}'))
+				print("\n")
+			else:
+				args = commandSplit[1]
+				firstPart = commandSplit[0]
+				asyncio.run(run(f'{firstPart} {args}'))
+				print('\n')
 		elif len(commandSplit) == 1:
 			args = ""
 			firstPart = commandSplit[0]
-			if firstPart != 'help' and 'exit':
+			if firstPart != 'help' and 'exit' and 'ls' and 'cwd':
 				subprocess.run([firstPart], capture_output=True,text=True, shell=True)
 				print('\n')
 			elif firstPart == 'exit':
+				break
 				sys.exit(-1)
 				exit(-1)
+			elif firstPart == 'ls':
+				print(cwd)
+			elif firstPart == 'cwd':
+				print(cwd)
 			else:
 				print("Not a command!")
+		
+		elif len(commandSplit) == 3:
+			arg1 = commandSplit[1]
+			arg2 = commandSplit[2]
+			asyncio.run(run(f'{firstPart} {arg1} {arg2}'))
+		
+		elif len(commandSplit) == 4:
+			arg = commandSplit[1]
+			arg1 = commandSplit[2]
+			arg2 = commandSplit[3]
+			asyncio.run(run(f'{firstPart} {arg} {arg1} {arg2}'))
+			print("\n")
 commands()
