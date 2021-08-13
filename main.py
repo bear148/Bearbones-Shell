@@ -4,10 +4,9 @@ import subprocess
 import asyncio
 
 env = {}
-v = "3.1.1"
+v = "3.1.2"
 env['TERM'] = "linux"
 cwd = os.getcwd()
-c = input(f"[{cwd}]- #: ")
 
 def help():
 	print("\n")
