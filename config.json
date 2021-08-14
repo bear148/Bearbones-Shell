@@ -1,0 +1,7 @@
+{
+	"__comment": "Please read the documentation for config files before changing things here.",
+	"useCustomCommands": false,
+	"customCommandDirectory": "",
+	"textColor": "white",
+	"dirColor": "white"
+}
