@@ -15,4 +15,4 @@ These are commands that are <b>built into</b> Bearbones.
 - ```todo```:       Shows my current to-do list
 - ```info```:       Shows some extra info
 
-Bearbones currently work with almost every single command that comes with linux. The only commands that don't work are ```vim```, ```neofetch```, and some others. I have not yet tested all of them yet.
+Bearbones currently works with almost every single command that comes with linux. The only commands that don't work are ```vim```, ```neofetch```, and some others. I have not yet tested all of them yet.
