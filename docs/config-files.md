@@ -2,7 +2,7 @@
 Configuring Bearbones shell is pretty simple, though the names of the settings may be confusing.
 
 ### Different settings
-Currently, as of 3.2.2a, there are 4 settings that you can change.
+Currently, as of 4.2.2a, there are 4 settings that you can change.
 These include:
 - ```useCustomCommands```:        This can be set to true or false to choose whether or not you want to have custom commands enabled.
 - ```customCommandDirectory```:   If ```useCustomCommands``` is set to "true", you need to put the directory that leads to the binaries here.
@@ -28,7 +28,7 @@ These are the colors:
 - ```magenta```
 - ```cyan```
 - ```white```
-- ```light_black``
+- ```light_black```
 - ```light_red```
 - ```light_green```
 - ```light_yellow```
@@ -36,5 +36,7 @@ These are the colors:
 - ```light_magenta```
 - ```light_cyan```
 - ```light_white```
+
 <br>
+
 To use these colors, just put your chosen colors into either the ```textColor``` setting, or ```dirColor``` setting. Make sure that whatever color you put, looks the same as the name for the color as shown in the list!
