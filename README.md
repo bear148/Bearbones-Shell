@@ -1,5 +1,3 @@
-# Bearbones Shell
-
 <img src="/imgs/logo.png" width=200px height=200px style="text-align: center;">
 
 ## Requirements
